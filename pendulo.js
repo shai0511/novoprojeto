@@ -8,12 +8,17 @@ let angleAcceleration = 0; // aceleração angular
 const damping = 0.99; // fator de amortecimento
 const gravity = 0.4; // força da gravidade
 
+// Variáveis para frequência e período
+let amplitude = Math.abs(angle);
+let frequency = 0;
+let period = 0;
+
 function update() {
-    // Cálculo da aceleração angular
     angleAcceleration = (-1 * gravity / length) * Math.sin(angle);
     angleVelocity += angleAcceleration;
-    angleVelocity *= damping; // aplicar o fator de amortecimento
+    angleVelocity *= damping; 
     angle += angleVelocity;
+
     // Atualizar amplitude, frequência e período
     amplitude = Math.abs(angle);
     frequency = 1 / (2 * Math.PI) * Math.sqrt(gravity / length);
@@ -23,41 +28,36 @@ function update() {
     updateMeasurements();
 }
 
-
 function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // limpar o canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = 'black';
 
-    // Calcular a posição do pêndulo
     const x = length * Math.sin(angle) + canvas.width / 2;
-    const y = length * Math.cos(angle) + 50; // +50 para não sair do canvas
+    const y = length * Math.cos(angle) + 50;
 
-    // Desenhar o ponto de suspensão
     ctx.beginPath();
     ctx.arc(canvas.width / 2, 50, 5, 0, Math.PI * 2);
     ctx.fill();
 
-    // Desenhar o pêndulo
     ctx.beginPath();
     ctx.moveTo(canvas.width / 2, 50);
     ctx.lineTo(x, y);
     ctx.stroke();
 
-    // Desenhar a bolinha do pêndulo
     ctx.beginPath();
     ctx.arc(x, y, 10, 0, Math.PI * 2);
     ctx.fill();
 }
+
 function updateMeasurements() {
     document.getElementById('amplitude').textContent = amplitude.toFixed(2) + ' rad';
     document.getElementById('frequencia').textContent = frequency.toFixed(2) + ' Hz';
     document.getElementById('periodo').textContent = period.toFixed(2) + ' s';
 }
-// Iniciar a animação
+
 function animate() {
     update();
     requestAnimationFrame(animate);
 }
 
-// Iniciar a simulação quando a página carregar
 window.onload = animate;
