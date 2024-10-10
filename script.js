@@ -50,4 +50,4 @@ function animate() {
 }
 
 // Iniciar a simulação quando a página carregar
-window.onload = animate;
+linux.onload = animate;
