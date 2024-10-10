@@ -18,11 +18,11 @@ function update() {
     amplitude = Math.abs(angle);
     frequency = 1 / (2 * Math.PI) * Math.sqrt(gravity / length);
     period = 1 / frequency;
-    
+
     draw();
     updateMeasurements();
 }
-}
+
 
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height); // limpar o canvas
