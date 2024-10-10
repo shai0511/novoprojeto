@@ -14,8 +14,14 @@ function update() {
     angleVelocity += angleAcceleration;
     angleVelocity *= damping; // aplicar o fator de amortecimento
     angle += angleVelocity;
-
+    // Atualizar amplitude, frequência e período
+    amplitude = Math.abs(angle);
+    frequency = 1 / (2 * Math.PI) * Math.sqrt(gravity / length);
+    period = 1 / frequency;
+    
     draw();
+    updateMeasurements();
+}
 }
 
 function draw() {
