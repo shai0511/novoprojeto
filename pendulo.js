@@ -3,9 +3,9 @@ const ctx = canvas.getContext('2d');
 
 const length = 150; // comprimento do pêndulo
 let angle = Math.PI / 3; // ângulo inicial
-let angleVelocity = 0; // velocidade angular
+let angleVelocity = 0.1; // velocidade angular
 let angleAcceleration = 0; // aceleração angular
-const damping = 0.99; // fator de amortecimento
+const damping = 0.995; // fator de amortecimento
 const gravity = 0.8; // força da gravidade
 
 // Variáveis para frequência e período
