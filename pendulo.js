@@ -2,7 +2,7 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 const length = 150; // comprimento do pêndulo
-let angle = Math.PI / 5; // ângulo inicial
+let angle = Math.PI / 9; // ângulo inicial
 let angleVelocity = 9.0; // velocidade angular
 let angleAcceleration = 9.0; // aceleração angular
 const damping = 0.9; // fator de amortecimento
