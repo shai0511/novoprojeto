@@ -48,7 +48,11 @@ function draw() {
     ctx.arc(x, y, 10, 0, Math.PI * 2);
     ctx.fill();
 }
-
+function updateMeasurements() {
+    document.getElementById('amplitude').textContent = amplitude.toFixed(2) + ' rad';
+    document.getElementById('frequencia').textContent = frequency.toFixed(2) + ' Hz';
+    document.getElementById('periodo').textContent = period.toFixed(2) + ' s';
+}
 // Iniciar a animação
 function animate() {
     update();
