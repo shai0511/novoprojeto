@@ -5,7 +5,7 @@ const length = 150; // comprimento do pêndulo
 let angle = Math.PI / 5; // ângulo inicial
 let angleVelocity = 1.0; // velocidade angular
 let angleAcceleration = 0.5; // aceleração angular
-const damping = 1.0; // fator de amortecimento
+const damping = 0.9; // fator de amortecimento
 const gravity = 0.9; // força da gravidade
 
 // Variáveis para frequência e período
