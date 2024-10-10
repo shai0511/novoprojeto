@@ -20,7 +20,7 @@ function update() {
     angle += angleVelocity;
 
     // Atualizar amplitude, frequência e período
-    amplitude = Math.abs(angle);
+    amplitude = Math.sin(angle);
     frequency = 1 / (2 * Math.PI) * Math.sqrt(gravity / length);
     period = 1 / frequency;
 
