@@ -9,7 +9,7 @@ const damping = 0.99; // fator de amortecimento
 const gravity = 0.8; // força da gravidade
 
 // Variáveis para frequência e período
-let amplitude = Math.abs(angle);
+let amplitude = Math.sin(angle);
 let frequency = 0;
 let period = 0;
 
