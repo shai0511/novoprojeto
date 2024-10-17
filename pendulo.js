@@ -3,20 +3,20 @@ const ctx = canvas.getContext('2d');
 
 const length = 150; // comprimento do pêndulo
 let angle = Math.PI / 4; // ângulo inicial
-let angleVelocity = 0.5; // velocidade angular inicial constante
+let angleVelocity = 0.05; // velocidade angular constante (ajuste para velocidade desejada)
 const maxAngle = Math.PI / 4; // ângulo máximo permitido
 
 function update() {
     // Atualizar o ângulo
     angle += angleVelocity;
 
-    // Restringir o movimento do ângulo
+    // Inverter a direção se atingir os limites
     if (angle > maxAngle) {
         angle = maxAngle;
-        angleVelocity *= -1; // inverte a velocidade
+        angleVelocity = -Math.abs(angleVelocity); // garante que a velocidade continue positiva ao inverter
     } else if (angle < -maxAngle) {
         angle = -maxAngle;
-        angleVelocity *= -1; // inverte a velocidade
+        angleVelocity = Math.abs(angleVelocity); // garante que a velocidade continue positiva ao inverter
     }
 
     draw();
