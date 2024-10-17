@@ -8,20 +8,22 @@ const gravity = 0.4; // força da gravidade
 const maxAngle = Math.PI / 4; // ângulo máximo permitido
 
 function update() {
-    // Restringir o movimento do ângulo
-    if (angle > maxAngle) angle = maxAngle;
-    if (angle < -maxAngle) angle = -maxAngle;
-
+    // Calcular a aceleração
     let angleAcceleration = (-1 * gravity / length) * Math.sin(angle);
+    
+    // Atualizar a velocidade angular
     angleVelocity += angleAcceleration;
 
+    // Atualizar o ângulo
     angle += angleVelocity;
 
-    // Garantir que o pêndulo não pare completamente
+    // Restringir o movimento do ângulo
     if (angle > maxAngle) {
-        angleVelocity *= -1; // inverte a velocidade ao alcançar o limite
+        angle = maxAngle;
+        angleVelocity *= -1; // inverte a velocidade
     } else if (angle < -maxAngle) {
-        angleVelocity *= -1; // inverte a velocidade ao alcançar o limite
+        angle = -maxAngle;
+        angleVelocity *= -1; // inverte a velocidade
     }
 
     draw();
