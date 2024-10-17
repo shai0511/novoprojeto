@@ -3,8 +3,7 @@ const ctx = canvas.getContext('2d');
 
 const length = 150; // comprimento do pêndulo
 let angle = Math.PI / 4; // ângulo inicial
-let angleVelocity = 0.1; // velocidade angular inicial (pequeno valor para movimento contínuo)
-const damping = 0.99; // fator de amortecimento
+let angleVelocity = 0.5; // velocidade angular inicial (ajuste conforme necessário)
 const gravity = 0.4; // força da gravidade
 const maxAngle = Math.PI / 4; // ângulo máximo permitido
 
@@ -15,13 +14,14 @@ function update() {
 
     let angleAcceleration = (-1 * gravity / length) * Math.sin(angle);
     angleVelocity += angleAcceleration;
-    angleVelocity *= damping; 
 
     angle += angleVelocity;
 
     // Garantir que o pêndulo não pare completamente
-    if (Math.abs(angleVelocity) < 0.01) {
-        angleVelocity *= 1.1; // Aumenta a velocidade um pouco para manter o movimento
+    if (angle > maxAngle) {
+        angleVelocity *= -1; // inverte a velocidade ao alcançar o limite
+    } else if (angle < -maxAngle) {
+        angleVelocity *= -1; // inverte a velocidade ao alcançar o limite
     }
 
     draw();
