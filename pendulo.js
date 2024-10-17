@@ -3,26 +3,26 @@ const ctx = canvas.getContext('2d');
 
 const length = 150; // comprimento do pêndulo
 let angle = Math.PI / 4; // ângulo inicial
-let angleVelocity = 0; // velocidade angular
+let angleVelocity = 0.1; // velocidade angular inicial (pequeno valor para movimento contínuo)
 const damping = 0.99; // fator de amortecimento
 const gravity = 0.4; // força da gravidade
 const maxAngle = Math.PI / 4; // ângulo máximo permitido
 
-// Variáveis para frequência e período
-let amplitude = Math.sin(angle);
-let frequency = 0;
-let period = 0;
-
 function update() {
-    angleAcceleration = (-1 * gravity / length) * Math.sin(angle);
+    // Restringir o movimento do ângulo
+    if (angle > maxAngle) angle = maxAngle;
+    if (angle < -maxAngle) angle = -maxAngle;
+
+    let angleAcceleration = (-1 * gravity / length) * Math.sin(angle);
     angleVelocity += angleAcceleration;
     angleVelocity *= damping; 
+
     angle += angleVelocity;
 
-    // Atualizar amplitude, frequência e período
-    amplitude = Math.sin(angle);
-    frequency = 1 / (2 * Math.PI) * Math.sqrt(gravity / length);
-    period = 1 / frequency;
+    // Garantir que o pêndulo não pare completamente
+    if (Math.abs(angleVelocity) < 0.01) {
+        angleVelocity *= 1.1; // Aumenta a velocidade um pouco para manter o movimento
+    }
 
     draw();
     updateMeasurements();
@@ -50,9 +50,9 @@ function draw() {
 }
 
 function updateMeasurements() {
-    document.getElementById('amplitude').textContent = amplitude.toFixed(2) + ' rad';
-    document.getElementById('frequencia').textContent = frequency.toFixed(2) + ' Hz';
-    document.getElementById('periodo').textContent = period.toFixed(2) + ' s';
+    document.getElementById('amplitude').textContent = (angle * 180 / Math.PI).toFixed(2) + '°';
+    document.getElementById('frequencia').textContent = (1 / (2 * Math.PI) * Math.sqrt(gravity / length)).toFixed(2) + ' Hz';
+    document.getElementById('periodo').textContent = (2 * Math.PI * Math.sqrt(length / gravity)).toFixed(2) + ' s';
 }
 
 function animate() {
