@@ -3,7 +3,7 @@ const ctx = canvas.getContext('2d');
 
 const length = 150; // comprimento do pêndulo
 let angle = Math.PI / 4; // ângulo inicial
-let angleVelocity = 0.5; // velocidade angular inicial (ajuste conforme necessário)
+let angleVelocity = 0.5; // velocidade angular inicial
 const gravity = 0.4; // força da gravidade
 const maxAngle = Math.PI / 4; // ângulo máximo permitido
 
