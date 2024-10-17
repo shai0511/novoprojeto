@@ -6,6 +6,7 @@ let angle = Math.PI / 4; // ângulo inicial
 let angleVelocity = 0; // velocidade angular
 const damping = 0.99; // fator de amortecimento
 const gravity = 0.4; // força da gravidade
+const maxAngle = Math.PI / 4; // ângulo máximo permitido
 
 // Variáveis para frequência e período
 let amplitude = Math.sin(angle);
