@@ -26,7 +26,7 @@ function update() {
         angle += angleVelocity;
 
         // Diminui a velocidade ao longo do tempo para simular resistência
-        angleVelocity *= 0.99; 
+        angleVelocity *= 0.99;
 
         // Inverter a direção se atingir os limites
         if (angle > maxAngle || angle < -maxAngle) {
@@ -77,7 +77,7 @@ canvas.addEventListener('mousedown', (event) => {
 
     const x = length * Math.sin(angle) + pivotX;
     const y = length * Math.cos(angle) + pivotY;
-    
+
     // Verifica se o clique foi na massa do pêndulo
     if (Math.hypot(mouseX - x, mouseY - y) < 10) {
         isDragging = true;
@@ -91,8 +91,10 @@ canvas.addEventListener('mousemove', (event) => {
         const mouseX = event.clientX - rect.left;
         const mouseY = event.clientY - rect.top;
 
-        // Calcula o novo ângulo baseado na posição do mouse
-        angle = Math.atan2(mouseY - pivotY, mouseX - pivotX);
+        // Calcula a nova posição do pêndulo com base no mouse
+        const dx = mouseX - pivotX;
+        const dy = mouseY - pivotY;
+        angle = Math.atan2(dy, dx); // Define o ângulo baseado na posição do mouse
 
         // Atualiza a amplitude máxima
         maxAngle = Math.abs(angle);
