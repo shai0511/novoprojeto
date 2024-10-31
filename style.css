@@ -21,7 +21,44 @@ canvas {
 }
 
 table {
-    border-collapse: collapse;
+    border-collabody {
+        display: flex;
+        flex-direction: column; /* Para empilhar canvas e medições verticalmente */
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #800080; /* Fundo claro para melhor visibilidade */
+    }
+    
+    canvas {
+        border: 1px solid black;
+        margin-bottom: 20px; /* Espaço entre o canvas e a tabela */
+    }
+    
+    .measurements-container {
+        background-color:#800080; /* Fundo claro para melhor visibilidade */
+        ; /* Fundo branco para a tabela */
+        padding: 20px; /* Espaçamento interno */
+        border-radius: 10px; /* Bordas arredondadas */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
+    }
+    
+    table {
+        border-collapse: collapse;
+        width: 100%; /* Tabela ocupa a largura total do contêiner */
+    }
+    
+    th, td {
+        border: 1px solid black;
+        padding: 10px;
+        text-align: center;
+    }
+    
+    th {
+        background-color: #800080;
+    }
+    pse: collapse;
     width: 100%;
 }
 
