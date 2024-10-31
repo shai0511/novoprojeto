@@ -25,10 +25,7 @@ function update() {
         // Movimento Harmônico Simples
         angle += angleVelocity;
 
-        // Diminui a velocidade ao longo do tempo para simular resistência
-        angleVelocity *= 0.99;
-
-        // Inverter a direção se atingir os limites
+        // Se o pêndulo atingir o limite máximo, inverte a direção
         if (angle > maxAngle || angle < -maxAngle) {
             angleVelocity = -angleVelocity; // inverte a direção
         }
@@ -105,9 +102,9 @@ canvas.addEventListener('mousemove', (event) => {
 
 canvas.addEventListener('mouseup', () => {
     isDragging = false; // Solta o pêndulo
-    
-    // Define a velocidade inicial como uma fração do ângulo
-    angleVelocity = 0.5 * Math.sin(angle); // Ajusta a velocidade inicial para iniciar a oscilação
+
+    // Inicia o movimento com uma velocidade constante
+    angleVelocity = 0.05; // Define uma velocidade constante para o MHS
 });
 
 canvas.addEventListener('mouseleave', () => {
