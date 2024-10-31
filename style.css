@@ -4,7 +4,35 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f0f0; /* Fundo claro para melhor visibilidade */
+    background-color: body {
+        display: flex;
+        flex-direction: column; /* Para empilhar canvas e medições verticalmente */
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f202ffbc; /* Fundo claro para melhor visibilidade */
+    }
+    
+    canvas {
+        border: 1px solid black;
+        margin-bottom: 20px; /* Espaço entre o canvas e a tabela */
+    }
+    
+    table {
+        border-collapse: collapse;
+    }
+    
+    th, td {
+        border: 1px solid black;
+        padding: 10px;
+        text-align: center;
+    }
+    
+    th {
+        background-color: #e0e0e0;
+    }
+     /* Fundo claro para melhor visibilidade */
 }
 
 canvas {
