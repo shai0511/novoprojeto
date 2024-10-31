@@ -94,6 +94,8 @@ canvas.addEventListener('mousemove', (event) => {
         // Calcula a nova posição do pêndulo com base no mouse
         const dx = mouseX - pivotX;
         const dy = mouseY - pivotY;
+
+        // Define o ângulo baseado na posição do mouse, garantindo que siga a direção correta
         angle = Math.atan2(dy, dx); // Define o ângulo baseado na posição do mouse
 
         // Atualiza a amplitude máxima
