@@ -1,18 +1,28 @@
 <!DOCTYPE html>
-<html lang="PT-BR">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulação de Pêndulo</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Pêndulo</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
 </head>
 <body>
-    <canvas id="canvas" width="500" height="500"></canvas>
-    <div id="info">
-        <p>Amplitude: <span id="amplitude"></span></p>
-        <p>Frequência: <span id="frequencia"></span></p>
-        <p>Período: <span id="periodo"></span></p>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <div>
+        <div id="amplitude">Amplitude: 0°</div>
+        <div id="frequencia">Frequência: 0 Hz</div>
+        <div id="periodo">Período: 0 s</div>
     </div>
-    <script src="pendulo.js"></script>
 </body>
 </html>
