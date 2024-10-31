@@ -1,8 +1,9 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
-canvas.width = 400; // largura do canvas
-canvas.height = 300; // altura do canvas
+// Define as dimensões do canvas
+canvas.width = 400; 
+canvas.height = 300; 
 
 const length = 150; // comprimento do pêndulo
 let angle = Math.PI / 4; // ângulo inicial (45 graus)
@@ -50,7 +51,7 @@ function draw() {
 }
 
 function updateMeasurements() {
-    document.getElementById('amplitude').textContent = (angle * 180 / Math.PI).toFixed(2) + '°';
+    document.getElementById('amplitude').textContent = (maxAngle * 180 / Math.PI).toFixed(2) + '°';
     document.getElementById('frequencia').textContent = (1 / (2 * Math.PI) * Math.sqrt(9.81 / length)).toFixed(2) + ' Hz';
     document.getElementById('periodo').textContent = (2 * Math.PI * Math.sqrt(length / 9.81)).toFixed(2) + ' s';
 }
