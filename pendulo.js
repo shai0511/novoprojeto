@@ -3,8 +3,9 @@ const ctx = canvas.getContext('2d');
 
 const length = 150; // comprimento do pêndulo
 let angle = Math.PI / 4; // ângulo inicial
-let angleVelocity = 0.02; // velocidade angular
-const maxAngle = Math.PI / 4; // ângulo máximo permitido
+let angleVelocity = 0; // velocidade angular inicial
+let isDragging = false; // Controle se o pêndulo está sendo arrastado
+let maxAngle = angle; // Armazena a amplitude máxima ao soltar
 
 // Centraliza o pêndulo
 const pivotX = canvas.width / 2;
@@ -20,11 +21,17 @@ function calculateFrequencyAndPeriod() {
 
 // Função de animação
 function update() {
-    angle += angleVelocity;
+    if (!isDragging) {
+        // Movimento Harmônico Simples
+        angle += angleVelocity;
 
-    // Inverter a direção se atingir os limites
-    if (angle > maxAngle || angle < -maxAngle) {
-        angleVelocity = -angleVelocity; // inverte a direção
+        // Diminui a velocidade ao longo do tempo para simular resistência
+        angleVelocity *= 0.99; 
+
+        // Inverter a direção se atingir os limites
+        if (angle > maxAngle || angle < -maxAngle) {
+            angleVelocity = -angleVelocity; // inverte a direção
+        }
     }
 
     draw();
@@ -56,13 +63,51 @@ function draw() {
 }
 
 function updateMeasurements() {
-    document.getElementById('amplitude').textContent = (angle * 180 / Math.PI).toFixed(2) + '°';
+    document.getElementById('amplitude').textContent = (maxAngle * 180 / Math.PI).toFixed(2) + '°';
     const { frequency, period } = calculateFrequencyAndPeriod();
     document.getElementById('frequencia').textContent = frequency.toFixed(2) + ' Hz';
     document.getElementById('periodo').textContent = period.toFixed(2) + ' s';
 }
 
-// Animação contínua
+// Eventos de mouse
+canvas.addEventListener('mousedown', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    const mouseX = event.clientX - rect.left;
+    const mouseY = event.clientY - rect.top;
+
+    const x = length * Math.sin(angle) + pivotX;
+    const y = length * Math.cos(angle) + pivotY;
+    
+    // Verifica se o clique foi na massa do pêndulo
+    if (Math.hypot(mouseX - x, mouseY - y) < 10) {
+        isDragging = true;
+        angleVelocity = 0; // Para a oscilação ao arrastar
+    }
+});
+
+canvas.addEventListener('mousemove', (event) => {
+    if (isDragging) {
+        const rect = canvas.getBoundingClientRect();
+        const mouseX = event.clientX - rect.left;
+        const mouseY = event.clientY - rect.top;
+
+        // Calcula o novo ângulo baseado na posição do mouse
+        angle = Math.atan2(mouseY - pivotY, mouseX - pivotX);
+
+        // Atualiza a amplitude máxima
+        maxAngle = Math.abs(angle);
+    }
+});
+
+canvas.addEventListener('mouseup', () => {
+    isDragging = false; // Solta o pêndulo
+    angleVelocity = 0.1 * Math.sign(angle); // Inicia o movimento com uma velocidade
+});
+
+canvas.addEventListener('mouseleave', () => {
+    isDragging = false; // Para garantir que o arraste pare ao sair do canvas
+});
+
 function animate() {
     update();
     requestAnimationFrame(animate);
