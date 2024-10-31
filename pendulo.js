@@ -105,9 +105,9 @@ canvas.addEventListener('mousemove', (event) => {
 
 canvas.addEventListener('mouseup', () => {
     isDragging = false; // Solta o pêndulo
-
-    // Inicia o movimento com uma velocidade proporcional ao ângulo
-    angleVelocity = 0.1 * Math.sin(angle); // Ajusta a velocidade inicial para iniciar a oscilação
+    
+    // Define a velocidade inicial como uma fração do ângulo
+    angleVelocity = 0.5 * Math.sin(angle); // Ajusta a velocidade inicial para iniciar a oscilação
 });
 
 canvas.addEventListener('mouseleave', () => {
