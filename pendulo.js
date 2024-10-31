@@ -1,6 +1,9 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
+canvas.width = 400; // largura do canvas
+canvas.height = 300; // altura do canvas
+
 const length = 150; // comprimento do pêndulo
 let angle = Math.PI / 4; // ângulo inicial (45 graus)
 let angleVelocity = 0.05; // velocidade angular constante
