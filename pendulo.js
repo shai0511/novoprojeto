@@ -3,7 +3,7 @@ const ctx = canvas.getContext('2d');
 
 const length = 150; // comprimento do pêndulo
 let angle = Math.PI / 5; // ângulo inicial
-let angleVelocity = 0.0001; // velocidade angular constante
+let angleVelocity = 0.05; // velocidade angular constante
 const maxAngle = Math.PI / 4; // ângulo máximo permitido
 
 // Centraliza o pêndulo
@@ -13,12 +13,9 @@ const pivotY = 50; // Altura do ponto de suspensão
 function update() {
     angle += angleVelocity;
 
-    if (angle > maxAngle) {
-        angle = maxAngle;
-        angleVelocity = -Math.abs(angleVelocity);
-    } else if (angle < -maxAngle) {
-        angle = -maxAngle;
-        angleVelocity = Math.abs(angleVelocity);
+    // Inverter a direção se atingir os limites
+    if (angle > maxAngle || angle < -maxAngle) {
+        angleVelocity = -angleVelocity; // inverte a direção
     }
 
     draw();
