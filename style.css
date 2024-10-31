@@ -5,7 +5,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #800080;;
+    background-color: #800080; /* Fundo roxo */
 }
 
 canvas {
@@ -14,7 +14,7 @@ canvas {
 }
 
 .measurements-container {
-    background-color: #800080;;
+    background-color: #800080;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -32,5 +32,5 @@ th, td {
 }
 
 th {
-    background-color: #e0e0e0;
+    background-color: #800080;
 }
