@@ -95,7 +95,7 @@ canvas.addEventListener('mousemove', (event) => {
         const dx = mouseX - pivotX;
         const dy = mouseY - pivotY;
 
-        // Define o ângulo baseado na posição do mouse, garantindo que siga a direção correta
+        // Define o ângulo baseado na posição do mouse
         angle = Math.atan2(dy, dx); // Define o ângulo baseado na posição do mouse
 
         // Atualiza a amplitude máxima
@@ -105,7 +105,9 @@ canvas.addEventListener('mousemove', (event) => {
 
 canvas.addEventListener('mouseup', () => {
     isDragging = false; // Solta o pêndulo
-    angleVelocity = 0.1 * Math.sign(angle); // Inicia o movimento com uma velocidade
+
+    // Inicia o movimento com uma velocidade proporcional ao ângulo
+    angleVelocity = 0.1 * Math.sin(angle); // Ajusta a velocidade inicial para iniciar a oscilação
 });
 
 canvas.addEventListener('mouseleave', () => {
