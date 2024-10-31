@@ -1,9 +1,12 @@
-canvas {
-    border: 3px solid black;
-    display: block;
-    margin: 0 auto;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0; /* Fundo claro para melhor visibilidade */
 }
-#info {
-    text-align: center;
-    margin-top: 20px;
+
+canvas {
+    border: 1px solid black;
 }
