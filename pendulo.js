@@ -3,7 +3,7 @@
 
         const length = 150; // comprimento do pêndulo
         let angle = Math.PI / 5; // ângulo inicial
-        let angleVelocity = 0.05; // velocidade angular constante
+        let angleVelocity = 0.0001; // velocidade angular constante
         const maxAngle = Math.PI / 4; // ângulo máximo permitido
 
         // Centraliza o pêndulo
